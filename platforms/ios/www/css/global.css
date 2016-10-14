@@ -1,0 +1,402 @@
+#wearon_title{
+  font-size: 50px;
+  font-weight: bold;
+}
+
+#front_image{
+  width:105vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+#triangle{
+  width: 0;
+  height: 0;
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  border-top: 50px solid black;
+}
+
+#setup_title{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#frontCoverTitle, #frontCoverDescription{
+	font-size: 40px;
+}
+
+#frontCoverDescription{
+	font-size: 15px;
+}
+
+#panel_image{
+  width:100vw;
+}
+
+#disconnectButton{
+  font-size: 20px;
+  padding-left:5vw;
+  padding-right: 5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color:white;
+  background-color: #ff3b3b;
+  box-shadow: none;
+  border:none;
+}
+
+#disconnectButton:hover{
+  background-color: #800000; 
+}
+
+#lockScreen{
+  font-size: 20px;
+  padding-left:5vw;
+  padding-right: 5vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color:white;
+  background-color: #EC7A37;
+  box-shadow: none;
+  border:none; 
+}
+
+#lockScreen:hover{
+  background-color: #b05b2a; 
+}
+
+.confirm, .restart{
+  font-size: 15px;
+  padding-left:3vw;
+  padding-right: 3vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color:black;
+  background-color: darkgrey;
+  box-shadow: none;
+  border:none;  
+}
+
+.confirm:hover, .restart:hover{
+  background-color: black;
+  color:white;
+}
+
+#begin, #scanForDevice, #placeholderBegin{
+  padding:3vw;
+  font-size: 25px;
+  color:white;
+  background-color: green;
+  box-shadow: none;
+  border:none;
+}
+
+#begin:hover, #scanForDevice:hover,#placeholderBegin:hover{
+  background-color: darkgreen;
+  color:black;
+}
+
+.getData, #anotherToken{
+  padding-bottom: 2vh;
+  padding-top: 2vh;
+  padding-left: 15vw;
+  padding-right: 15vw;
+  font-size: 25px;
+  color:white;
+  background-color: #4f4f4f;
+  box-shadow: none;
+  border:none;
+}
+
+.getData:hover, #anotherToken:hover{
+  background-color: black; 
+}
+
+.useStoredToken{
+  padding:3vw;
+  font-size: 20px;
+  background-color: #AAAAAA;
+  margin-top: 2vh;
+  opacity: 0.8;
+  box-shadow: none;
+  border:none;
+}
+
+#scanResultView{
+  font-size: 15px;
+}
+
+#placeholderBegin{
+	opacity:0.2;
+}
+
+#bottom{
+    vertical-align: bottom
+}
+
+.deviceContainer:onclick{
+  color:white;
+  background-color: black;
+}
+
+#connectA5status, #connectA4status, #geoStatus, #storedData, #panel_title, #footnote, #note,#DataFeed1_content_status, 
+#ThingfulFeed_content_status {
+	font-size: 12px;
+	opacity:0.5;
+}
+
+#device_check_bluetooth, #device_check_network, #device_check_gps, #user_device_connection, #device_check_panel_D9_D10{
+	font-size: 10px;
+	opacity:0.5;
+	color:red;	
+}
+
+#A4Bar, #A5Bar, #GEOreading, #DataFeed1, #ThingfulFeed{
+  font-size: 30px;
+  margin:5vw;
+}
+
+#connectA5status, #connectA4status, #geoStatus,#DataFeed1_content_status, #ThingfulFeed_content_status{
+	margin-top: 5px;
+}
+
+#connectA4error, #connectA5error{
+	font-size: 12px;
+	opacity:0.5;
+	color: red;
+}
+
+#connectedData{
+	font-size: 5px;
+	opacity:0.5;	
+}
+
+#appSensorInfo{
+	opacity:0.5;
+}
+
+#valueA5, #valueA4, #geolocationValue{
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+}
+
+#AppControl, #AppConnectivityControl, #AppGlobalConnectivityControl { 
+	font-size: 10px;
+}
+
+.enableA5, .connectA5, .enableA4, .connectA4, .enableGeoTrack, 
+.connectGeo, .enableD9, .connectD9, .enableD10, .connectD10 ,
+#saveState, #useState,  #get_data_set_1, #connect_data_set_1, 
+#saveState_data_feed_1, #useState_data_feed_1, #get_thingful, #connect_thingful,
+#saveState_thingful, #useState_thingful{
+	font-size: 15px;
+	background-color: white;
+	color:black;
+	border: 1px;
+	border-style: none;
+	border-width: 0.8px;
+	margin:4px;
+}
+
+.enableA4, .enableA5, .enableD9, .connectD9, .enableD10, .connectD10 ,  #get_data_set_1, #connect_data_set_1,
+#get_thingful, #connect_thingful {
+	padding-left: 18px;
+	padding-right: 18px;
+}
+
+#saveState, #saveState_data_feed_1, #saveState_thingful {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+#description{
+	font-size: 14px;
+	opacity:0.5;
+  margin-bottom: 10vh;
+}
+
+#instruction_list, #device_setting{ 
+	opacity:0.5;
+}
+
+#instruction{
+  font-size: 18px;
+  margin-left: 2vw;
+}
+
+.key{
+	width: 20vw;
+  height: 10vh;
+	font-size: 40px;
+}
+
+.tokenPageTitle{
+  font-size:20px;
+}
+
+
+#A4ControlPanel, #A5ControlPanel, #GEOControlPanel, #SaveControlPanel, #D9ControlPanel, #D10ControlPanel
+, #DateFeed1Panel, #SaveControlPanel_data_feed_1, #thingfulPanel, #SaveControlPanel_thingful {
+    display: inline-block;
+    width:100px;
+    background-color: lightgrey;
+    margin: 2px;
+    font-size: 15px;
+
+}
+
+#A4title, #A5title, #Geotitle, #saveStatetitle,#D9title, #D10title, #DataFeed1title , #saveStatetitle_data_feed_1, 
+#thingful_panel_title, #saveStatetitle_thingful {
+	margin-top: 4px;
+	color: black;
+}
+
+#userConfigKeyContent{
+	font-size: 15px;
+	color:grey;
+}
+
+#show_control_panel, #show_connectivity_panel, #show_global_connectivity_panel{
+	position:relative;
+	font-weight:bold;
+	width:30px;
+	height:30px;
+	border-radius:50%;
+	font-size:30px;
+	color:black;
+	line-height:15px;
+	text-align:center;
+	background:lightgrey;
+	border-style: none;
+	padding:3px;
+	outline:none;
+}
+
+
+#app_control_title, #app_connectivity_title, #app_global_connectivity_title{
+	position: relative;
+	bottom:2px;
+	font-size: 18px;
+	margin-right: 4px;
+}
+
+button#saveState:active, button#useState:active, button#D9_to_A4:active,
+button#D9_to_A5:active, button#confirm_connection_D9:active, button#construct_logic_D9:active,
+button#back_D9:active, button#saveState_data_feed_1:active, button#useState_data_feed_1:active,
+button#saveState_thingful:active, button#useState_thingful:active { 
+	background-color:black;
+	color:white;
+}
+
+#app_restarted_status{
+	font-size: 15px;
+	color:red;
+	margin:10px;
+	bottom: 45%;
+  left: 0;
+  position: fixed;
+  right: 0;
+}
+
+#connect_D9_panel, #connect_D10_panel, #get_data_set_1_panel, #connect_data_feed_1_panel,
+#get_thingful_data_panel, #connect_thingful_data_panel {
+    background-color: #ffa700;
+    padding-top: 10px;
+    font-size: 12px;
+    color: black;
+    bottom: 40%;
+    left: 0;
+    position: fixed;
+    right: 0;   
+    opacity: 0.98;
+}
+
+#logic_statement_D9, #logic_statement_D10, #logic_statement_data_feed_1, #logic_statement_thingful_feed{
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+#connect_D9_title, #connect_D10_title, #get_data_set_1_title, #connect_data_feed_1_title,
+#get_thingful_data_title, #connect_thingful_data_title{
+    font-size: 20px;
+}
+
+#numbering_D9, #numbering_D10, #numbering_data_feed_1, 
+#numbering_thingful_data_feed{
+    font-size: 40px;
+    width:100px;
+    height:50px;
+    vertical-align: middle;
+}
+
+#greater_than_D9,#select_sensor_D9, #on_off_D9,
+#greater_than_D10,#select_sensor_D10, #on_off_D10,
+#greater_than_data_feed_1, #select_output_data_feed_1, #on_off_data_feed_1,
+#greater_than_thingful_data_feed, #select_output_thingful_data_feed, #on_off_thingful_data_feed{
+    height:50px;
+    vertical-align: middle;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#check_logic_status_D9_sensor, #check_logic_status_D9_number, 
+#check_logic_status_D10_sensor, #check_logic_status_D10_number,
+#check_logic_status_data_feed_1_output, #check_logic_status_data_feed_1_number,
+#check_logic_status_thingful_data_feed_number, #check_logic_status_thingful_data_feed_output{
+	font-size:15px;
+	margin-bottom: 2px;
+}
+
+#check_overall_logic_status_D9, #check_overall_logic_status_D10, #check_overall_logic_status_data_feed_1,
+#check_overall_logic_thingful_status_data_feed{
+	font-size:20px;	
+	color:red;
+	margin-top:10px;
+}
+
+#close_panel_D9, #close_panel_D10{
+	font-size: 12px;
+	margin-bottom: 10px;
+}
+
+#instruction_logic_D9, #instruction_logic_D10, #instruction_logic_data_feed_1,
+#instruction_logic_thingful_feed{
+	font-size:12px;
+	margin-bottom: 10px;
+}
+
+#getData_connectivity_key_1, #getData_global_connectivity_key{
+	padding-left: 38px;
+	padding-right: 38px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top:10px;
+	margin-bottom: 10px;
+}
+
+#userConnectKeyContent_1, #userGlobalConnectKeyContent{
+	font-size: 12px;
+}
+
+#confirmation_connect_1, #confirmation_global_connect{
+	margin-top:10px;
+	margin-bottom: 15px;
+}
+
+.useStoredConnectKey_1, .useStoredGlobalConnectKey{
+	background-color: #AAAAAA;
+	margin-bottom: 15px;
+}
+
+#status_connect_key_1{
+	font-size:10px;
+	color:red;
+}
+
+.sub_instruction{
+  font-size: 14px;
+  color:#313131;
+  padding:2vw;
+}

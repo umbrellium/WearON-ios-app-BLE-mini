@@ -1,0 +1,118 @@
+#userA4{
+	margin-top: 60px;
+	margin-bottom: 50px;
+	font-size: 50px;
+	font-weight: bold;
+} 
+
+
+#userA5{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 30px;
+	font-weight: bold;
+} 
+
+
+#userGeo{
+	margin-top: 50px;
+	margin-bottom: 20px;
+	font-size: 40;
+	font-weight: bold;
+}
+
+#userGeoShape{
+/*triangle*/
+	width: 0;
+	height: 0;
+	border-left: 50px solid transparent;
+	border-right: 50px solid transparent;
+	border-top: 100px solid black;
+}
+
+/*lock screen button
+*/#userlockScreen{
+	position:absolute;
+	top: 10px;
+/*	top:0px;
+	right:0px;*/
+	color:white;
+	font-weight:bold;
+
+	/*circle*/
+	width: 30px;
+	height: 30px;
+	background: red;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	border-radius: 15px;
+	border-color:red;
+}
+
+
+#user_control_check{
+	font-size: 15px;
+	color:red;
+	margin:10px;
+	bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+}
+
+#user_device_connection, #user_device_check_network, #user_device_check_gps, #wrong_password{
+	font-size: 15px;
+	color:red;
+}
+
+#simpleWriteUp{
+	font-size: 10px;
+	color:white;
+	margin-top: 30px;
+	opacity: 0.5;
+}
+
+/*password verification if anyone wants to unlock screen 
+*/#verification{
+	background-color: white;
+  bottom: 40%;
+  left: 0;
+  position: fixed;
+  right: 0;	
+	opacity: 0.95;
+}
+
+#unlockScreenTitle{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-size: 20px;
+}
+
+#unlockScreenTitle{
+	padding:5px;
+}
+#unlockScreenButton, #cancelUnlockScreen{
+	font-size: 15px;
+  padding-left:3vw;
+  padding-right: 3vw;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  color:black;
+  background-color: darkgrey;
+  box-shadow: none;
+  border:none; 
+  margin-top:2vh;
+  margin-bottom: 2vh;
+}
+
+#unlockScreenButton:hover, #cancelUnlockScreen:hover{
+	background-color: black;
+  color:white;
+}
+
+#lockScreenPassword{
+	height:50px;
+	width: 50px;
+	font-size: 30px;
+}
+

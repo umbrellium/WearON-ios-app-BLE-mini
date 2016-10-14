@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no
+        initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <link rel="stylesheet" type="text/css" href="css/global.css">     
+<!--     <link rel="stylesheet" type="text/css" href="css/user.css">  
+ -->
+    <!--all the external js to keep app running properly-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="libs/evothings/evothings.js"></script>
+    <script src="libs/evothings/easyble/easyble.js"></script>
+    <script src="libs/jquery/jquery.js"></script>
+
+    <!--all the internal js and functions to keep app runnning properly -->
+    <script src="js/event.js"></script>
+    <script src="js/global.js"></script>
+    <script src="js/token_receiver.js"></script>
+    <script src="js/scan_for_device.js"></script>
+    <script src="js/connect_to_thingspeak.js"></script>
+    <script src="js/send_to_thingspeak.js"></script>
+    <script src="js/receive_data.js"></script>
+    <script src="js/send_data_phone.js"></script>
+    <script src="js/geolocation_tracking.js"></script>
+    <script src="js/lock_screen.js"></script>
+    <script src="js/app_control_panel_save.js"></script>
+    <script src="js/return_to_end_user_mode.js"></script>
+    <script src="js/digital_pin_D9.js"></script>
+    <script src="js/digital_pin_D10.js"></script>
+    <script src="js/data_feed_1.js"></script>
+    <script src="js/get_connect_key_1.js"></script>
+    <script src="js/connectivity_ctrl_panel_save.js"></script>
+    <script src="js/get_thingful_thing.js"></script>
+    <script src="js/global_connectivity_ctrl_panel_save.js"></script>
+    <script src="js/get_global_connect_key.js"></script>
+
+ </head>
+
+<body>
+
+
+    <!--Instruction page of WearON app-->
+    <div id="title">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <center><div id="wearon_title">WearON</div></center>
+    <img src="img/WearON_front_page.png" id = "front_image"></img>
+    <center><div id="description"> WearON is a prototyping platform for wearable designers to connect their devices quickly and simply to a smartphone, to the web and to each other </div></center>
+    <center>
+        <div class="sub_instruction">scroll down</div>
+        <div id="triangle"></div>
+    </center>
+    <hr/>
+    </div>
+
+    <div id="instruction">
+    <center><div id="setup_title">Setup</div></center>
+    <hr/>
+    <br>
+    <span id="device_setting"><b>Make sure all the phone settings are enabled or in good condition:</b><br>
+    Bluetooth: <span id="bluetooth_setting"> </span><br>
+    Network connection: <span id="network_setting"></span><br>
+    GPS: <span id="gps_setting"></span>
+    </span>
+    <br><br>
+    <span id="instruction_list"><b>Make sure you have created the following on WearON website: </b> <br>a. 1 or more data repository<br>b. A configuration key <br><br><b>On your device, you can utilise:</b><br> 2 Analog sensors (default: A4 and A5) <br> 2 Digital Pins (default: Pin 9 and 10)</span>
+    <span id="footnote"><br>*Update pin no. in the Arduino library given if you choose to change any pin</span>
+    <p>
+    <center><button id="begin" onclick="startApp()"> Begin </button></center>
+    <center><button id="placeholderBegin"> Loading... </button></center>
+    </div>
+
+    <!--App visual indication-->
+    <center><div id="visual_panel">
+    <div id = "small_title"><b>WearON </b></div>
+    <hr/>
+    <div id="graphicIllustration">
+    <img src="" id = "panel_image"></img>
+    <div id="panel_title"></div>
+    <div id="device_check_bluetooth"></div>
+    <div id="device_check_network"></div>
+    <div id="device_check_gps"></div>
+    <div id="device_check_panel_D9_D10">*Close D10 panel to open D9 panel*</div>
+    <hr/></center></div>
+    </div>
+
+    <center><div id="loading_status">Loading...</div></center>
+
+    <!--Scanning Device Page -->
+    <div id="scanDevicePage">
+    <center><button id="scanForDevice" onclick="app.startScan()"> Scan For Device </button></center>
+    <div id="scanResultView"> </div>
+    <p id="scanStatus"></p>
+    </div>
+
+    <!--Token Key Page -->
+    <center><div id="tokenKeyPage">
+    <div class = "tokenPageTitle">Input Configuration Key</div><br>
+    <input type="text" id="key" class="key" maxlength="3"> </input>
+    - <input type="text" id="key2" class="key" maxlength="3"> </input><br>
+    <span id="note">*case-sensitive*</span><br>
+    <p>
+    <button onclick="getTokenData()" class= "getData" >Get Data</button>
+    <br>
+    <button onclick="lastSavedToken()" class= "useStoredToken" ></button>
+    <p>
+    <div id="userConfigKeyContent">
+    <div class ="userEmail" id ="userEmail" ></div>
+    <div class ="userLockPassword" id ="userLockPassword" ></div>
+    <div class ="userApi" id ="userApi" ></div>
+    <div class ="thingspeakApi" id ="thingspeakApi" ></div>
+    <div class ="readApi" id ="readApi" ></div>
+    <div class ="channelID" id ="channelID"></div>
+    <div class ="Analog1" id ="Analog1"></div>
+    <div class ="Analog2" id ="Analog2"></div>
+    </div>
+    <p>
+    </div></center>
+
+    <!--Token Key confirmation page -->
+    <center><div id="confirmationPage">
+    <button type="button" value="Confirm" class = "confirm" onclick="confirmPrelude()"> Connect to Thingspeak </button> 
+    <button type="button" class="restart" onclick="restart()"> Restart </button>
+    </div></center>
+
+     <!--App's Content, this is the UI for wearable designer to control the elements of their project, once lock screen, it
+     goes into End user's UI content --> 
+    <div id="AppContent">
+    <div id="A4Bar">
+    <span id="valueA4"> </span>
+    <span id="checking"> </span>
+    <span id="connectA4error">*if unexpected, check connection</span>
+    <div id="connectA4status">Number of readings sent to Thingspeak: - </div>
+    </div>
+
+    <div id="A5Bar">
+    <span id="valueA5"> </span>
+    <span id="connectA5error">*if unexpected, check connection</span>
+    <div id="connectA5status">Number of readings sent to Thingspeak: - </div>
+    </div>
+
+    <div id="GEOreading">
+    <span id="geolocationValue"> </span>
+    <div id="geoStatus">Number of readings sent to Thingspeak: - </div>
+    </div>
+
+    <div id="DataFeed1">
+    <span id="DataFeed1_content"> </span>
+    <div id="DataFeed1_content_status"></div>
+    </div>
+
+    <div id="ThingfulFeed">
+    <span id="ThingfulFeed_content"> </span>
+    <div id="ThingfulFeed_content_status"></div>
+    </div>
+
+    </div>
+    <!-- END of End user's UI content -->
+
+    <center><div id="verification">
+    <div id = "unlockScreenTitle"><b>Key in password</b></div>
+    <input type="password" id="lockScreenPassword" maxlength="4"size="4"> </input></br>
+    <button id="unlockScreenButton" onclick="verifyPassword()"> Unlock Screen </button>
+    <button id="cancelUnlockScreen" onclick="cancelUnlockScreen()"> Cancel </button>
+    </div></center>
+
+    <!-- Option to connect to another token key after disconnection -->
+    <center><p><button id="anotherToken" onclick="reset()"> Use Another Configuration Key </button></center>
+
+<div id="bottom">
+<!--App's Device Control Panel -->
+    <center><div id="AppControl">
+    <hr/>
+    <span id="app_control_title"><b>Device Control Panel</b></span>
+    <button type="button" id="show_control_panel" onclick="openAppControl()">+</button> <!-- in global.js -->
+    <hr/>
+
+    <div id="app_control_content">
+
+    <div id="A4ControlPanel">
+        <div id="A4title"><b> A4 </b></div>
+        <button type="button" class ="enableA4" onclick="app.toggelAnalogA4()"> Enable Pin</button> 
+        <button type="button" class ="connectA4" onclick="toggelConnectA4()">Connect to Thingspeak</button> 
+    </div>
+
+    <div id="A5ControlPanel">
+        <div id="A5title"><b> A5 </b></div>
+        <button type="button" class ="enableA5" onclick="app.toggelAnalogA5()"> Enable Pin</button> 
+        <button type="button" class ="connectA5" onclick="toggelConnectA5()">Connect to Thingspeak</button>  
+    </div>
+
+    <div id="GEOControlPanel">
+        <div id="Geotitle"><b> Geolocation </b></div>
+        <button type="button" class ="enableGeoTrack" onclick="app.toggleGeoTrack()"> Enable Tracking </button> 
+        <button type="button" class ="connectGeo" onclick="toggelConnectGeo()">Connect to Thingspeak</button> 
+    </div>
+
+    <div id="D9ControlPanel">
+        <div id="D9title"><b> D9 </b></div>
+        <button type="button" class ="enableD9" onclick="app.toggleDigitalD9()"> Enable Pin </button> 
+        <button type="button" class ="connectD9" onclick="toggelConnectD9()"> Set Logic </button> 
+    </div>
+
+    <div id="D10ControlPanel">
+        <div id="D10title"><b> D10 </b></div>
+        <button type="button" class ="enableD10" onclick="app.toggleDigitalD10()"> Enable Pin </button> 
+        <button type="button" class ="connectD10" onclick="toggelConnectD10()"> Set Logic </button> 
+    </div>
+
+    <div id="SaveControlPanel">
+        <div id="saveStatetitle"><b> Save Setting </b></div>
+        <button id="saveState" onclick="saveState()"> Save </button>
+        <button id="useState" onclick="useState()"> Use Last Saved </button>
+    </div>
+
+    </div>
+
+    </div></center>
+
+    <!-- logic connection panel for D9 pin -->
+    <center><div id="connect_D9_panel">
+    <div id="connect_D9_title"><b>Construct logic for D9</b></div>
+    <div id="instruction_logic_D9">Press buttons to switch inputs and key in number</div>
+
+    <div id="logic_statement_D9">
+    <span><b> if </b></span>  
+    <button id="select_sensor_D9" onclick="checkLogicD9_sensor()">A4</button>
+    <button id="greater_than_D9" onclick="checkLogicD9_greater_than()"> < </button>
+    <input type="number" id="numbering_D9"maxlength="5" size="5" placeholder= "+000" max="1023" onchange="checkLogicD9_number()"></input>
+    <span><b>, turn D9 </b></span> 
+    <button id="on_off_D9" onclick="checkLogicD9_on_off()">OFF</button>
+    </div>
+    <div id="check_logic_status_D9_sensor"></div>
+    <div id="check_logic_status_D9_number"></div>
+    <div id="check_overall_logic_status_D9"><b>-Logic: Unsuccessful-</b></div>
+    <div id="close_panel_D9">(Click 'Close panel' when completed)</div>
+    </div></center>
+
+    <!-- logic connection panel for D10 pin -->
+    <center><div id="connect_D10_panel">
+    <div id="connect_D10_title"><b>Construct logic for D10</b></div>
+    <div id="instruction_logic_D10">Press buttons to switch inputs and key in number</div>
+
+    <div id="logic_statement_D10">
+    <span><b> if </b></span>  
+    <button id="select_sensor_D10" onclick="checkLogicD10_sensor()">A4</button>
+    <button id="greater_than_D10" onclick="checkLogicD10_greater_than()"> < </button>
+    <input type="number" id="numbering_D10"maxlength="5" size="5" placeholder= "+000" max="1023" onchange="checkLogicD10_number()"></input>
+    <span><b>, turn D10 </b></span> 
+    <button id="on_off_D10" onclick="checkLogicD10_on_off()">OFF</button>
+    </div>
+    <div id="check_logic_status_D10_sensor"></div>
+    <div id="check_logic_status_D10_number"></div>
+    <div id="check_overall_logic_status_D10"><b>-Logic: Unsuccessful-</b></div>
+    <div id="close_panel_D10">(Click 'Close panel' when completed)</div>
+    </div></center>
+<!--END App's Device Control Panel -->
+
+<!--App's Cross connectivity Control Panel -->
+    <center><div id="AppConnectivityControl">
+        <hr/>
+        <span id="app_connectivity_title"><b>Cross Connectivity Control Panel</b></span>
+        <button type="button" id="show_connectivity_panel" onclick="openAppConnectivity()">+</button> <!-- in global.js -->
+        <hr/>
+
+        <div id="app_connectivity_control_content">
+        <div class="sub_instruction"> * User can connect up to 1 channel field feed * </div>
+
+        <div id="DateFeed1Panel">
+            <div id="DataFeed1title"><b> Data Feed </b></div>
+            <button type="button" id="get_data_set_1" onclick="toggelgetDataFeed1()"> Retrieve</button> 
+            <button type="button" id="connect_data_set_1"onclick="toggelConnect_data_feed_1()" >Set Logic</button>
+        </div>
+
+        <div id="SaveControlPanel_data_feed_1">
+            <div id="saveStatetitle_data_feed_1"><b> Save Setting </b></div>
+            <button id="saveState_data_feed_1" onclick="saveState_connectivity()"> Save </button>
+            <button id="useState_data_feed_1" onclick="useState_connectivity()"> Use Last Saved </button>
+        </div>
+
+        </div>
+    </div></center>
+    <!-- panel to retrive data feed from thingspeak channel -->
+    <center><div id="get_data_set_1_panel">
+        <div id="get_data_set_1_title"><b>Input Connectivity Key</b></div>
+        <br>
+        <input type="text" id="key3" class="key" maxlength="3"> </input>
+        - <input type="text" id="key4" class="key" maxlength="3"> </input><br>
+        <span id="note">*case-sensitive*</span><br>
+        <button onclick="getKeyData_connectivity_1()" id="getData_connectivity_key_1">Get Data </button>
+        <br>
+        <button onclick="lastSavedConnectKey_1()" class= "useStoredConnectKey_1" ></button>
+        <div id="userConnectKeyContent_1">
+        <div id="ReadApi_1"></div>
+        <div id="channelID_1"></div>
+        <div id="channel_field_1_1"></div>
+        <div id="channel_field_2_1"></div>
+        </div>
+        <div id="confirmation_connect_1">
+        <button type="button" value="Confirm_connect_1" class = "Confirm_connect_1" onclick="Confirm_connect_1()"> Retrieve Data Set </button> 
+        <button type="button" class="restart_connect_1" onclick="restart_connect_1()"> Restart </button>
+        </div>
+    </div></center>
+
+    <!-- logic connection panel for data feed 1 -->
+    <center><div id="connect_data_feed_1_panel">
+    <div id="connect_data_feed_1_title"><b>Construct logic for Data Feed</b></div>
+    <div id="instruction_logic_data_feed_1">Press buttons to switch inputs and key in number</div>
+
+    <div id="logic_statement_data_feed_1">
+    <span><b> if Val</b></span>  
+    <button id="greater_than_data_feed_1" onclick="checkLogic_data_feed_1_greater_than()"> < </button>
+    <input type="number" id="numbering_data_feed_1"maxlength="5" size="5" placeholder= "+000" max="1023" onchange="checkLogic_data_feed_1_number()"></input>
+    <span><b>, turn </b></span> 
+    <button id="select_output_data_feed_1" onclick="checkLogic_data_feed_1_output()">D9</button>
+    <button id="on_off_data_feed_1" onclick="checkLogic_data_feed_1_on_off()">OFF</button>
+    </div>
+    <div id="check_logic_status_data_feed_1_number"></div>
+    <div id="check_logic_status_data_feed_1_output"></div>
+    <div id="check_overall_logic_status_data_feed_1"><b>-Logic: Unsuccessful-</b></div>
+    <div id="close_panel_data_feed_1">(Click 'Close panel' when completed)</div>
+    </div></center>
+<!--END App's Cross connectivity Control Panel -->
+
+<!--App's Global connectivity Control Panel -->
+    <center><div id="AppGlobalConnectivityControl">
+        <hr/>
+        <span id="app_global_connectivity_title"><b>Global Connectivity Control Panel</b></span>
+        <button type="button" id="show_global_connectivity_panel" onclick="openAppGlobalConnectivity()">+</button> <!-- in global.js -->
+        <hr/>
+
+        <div id="app_global_connectivity_control_content">
+        <div class="sub_instruction"> * User can connect up to 1 Thing from Thingful* </div>
+
+        <div id="thingfulPanel">
+            <div id="thingful_panel_title"><b> Thingful feed </b></div>
+            <button type="button" id="get_thingful" onclick="toggelgetThingful()"> Retrieve</button> 
+            <button type="button" id="connect_thingful"onclick="toggelConnect_thingful()" >Set Logic</button>
+        </div>
+
+        <div id="SaveControlPanel_thingful">
+            <div id="saveStatetitle_thingful"><b> Save Setting </b></div>
+            <button id="saveState_thingful" onclick="saveState_global_connectivity()"> Save </button>
+            <button id="useState_thingful" onclick="useState_global_connectivity()"> Use Last Saved </button>
+        </div>
+
+        </div>
+    </div></center>
+
+    <!-- panel to retrive thing data from thingful -->
+    <center><div id="get_thingful_data_panel">
+        <div id="get_thingful_data_title"><b>Input Global Connectivity Key</b></div>
+        <br>
+        <input type="text" id="key5" class="key" maxlength="3"> </input>
+        - <input type="text" id="key6" class="key" maxlength="3"> </input><br>
+        <span id="note">*case-sensitive*</span><br>
+        <button onclick="getKeyData_global_connectivity()" id="getData_global_connectivity_key">Get Data </button>
+        <br>
+        <button onclick="lastSavedGlobalConnectKey()" class= "useStoredGlobalConnectKey" ></button>
+        <div id="userGlobalConnectKeyContent">
+        <div id="thingID"></div>
+        <div id="thing_data_name"></div>
+        </div>
+        <div id="confirmation_global_connect">
+        <button type="button" value="Confirm_global_connect" class = "Confirm_global_connect" onclick="Confirm_global_connect()"> Retrieve Data Set </button> 
+        <button type="button" class="restart_global_connect" onclick="restart_global_connect()"> Restart </button>
+        </div>
+
+    </div></center>
+
+<!-- logic connection panel for data feed 1 -->
+    <center><div id="connect_thingful_data_panel">
+        <div id="connect_thingful_data_title"><b>Construct logic for Thing's Feed</b></div>
+        <div id="instruction_logic_thingful_feed">Press buttons to switch inputs and key in number</div>
+
+        <div id="logic_statement_thingful_feed">
+        <span><b> if Val</b></span>
+        <button id="greater_than_thingful_data_feed" onclick="checkLogic_thingful_data_feed_greater_than()"> < </button>    
+        <input type="number" id="numbering_thingful_data_feed"maxlength="5" size="5" placeholder= "+000" max="1023" onchange="checkLogic_thingful_data_feed_number()"></input>
+        <span><b>, turn </b></span> 
+        <button id="select_output_thingful_data_feed" onclick="checkLogic_thingful_data_feed_output()">D9</button>
+        <button id="on_off_thingful_data_feed" onclick="checkLogic_thingful_data_feed_on_off()">OFF</button>
+        </div>
+        <div id="check_logic_status_thingful_data_feed_number"></div>
+        <div id="check_logic_status_thingful_data_feed_output"></div>
+        <div id="check_overall_logic_thingful_status_data_feed"><b>-Logic: Unsuccessful-</b></div>
+        <div id="close_panel_thingful_data_feed">(Click 'Close panel' when completed)</div>
+    </div></center>
+
+<!--END App's Cross connectivity Control Panel -->
+
+    <!-- Stored user's info, use for debugging. Turn it on by using $( "#connectedData").show(); at start of js script -->
+    <center>
+    <div id="connectedData">
+        <hr/>
+        <div><b>Connection Information</b></div>
+        <hr/>
+        <div>
+        <div id="connectedThingspeakPortals"> Not Connected to Thingspeak </div>
+        </div>
+        <div id="storedConnectedDevice"> </div>
+    </div>
+    </center>
+
+    <!-- Disconnect app from device -->
+    <div id="disconnectDevice">
+        <hr/>
+        <center>
+        <button id="disconnectButton" onclick="app.disconnect()"> Disconnect </button>
+        <button id="lockScreen" onclick="app.toggleLockScreen()"> Lock Screen </button>
+        </center>
+        <p>
+    </div>
+
+    </div>
+
+    <center><div id="app_restarted_status"> </div></center>
+
+
+<!--!!!!!End user's UI Content, Designer can change the end user's content here!!!!!! -->
+    <div id="endUserContent">
+
+    <button id="userlockScreen" onclick="app.toggleLockScreen()">X</button>
+
+    <center><div id="simpleWriteUp"> *Mock up of an End User Interface* </div></center>
+
+    <div id="userA4Content">
+    <center><div id="userA4"> </div></center>
+    </div>
+
+    <div id="userA5Content">
+    <center><div id="userA5"> </div></center>
+    </div>
+
+    <div id="userGeoContent">
+    <center><div id="userGeo"> </div></center>
+    <center><div id="userGeoShape"> </div></center>
+    </div>
+
+    <center><div id="user_control_check">
+    <div id="user_device_connection"> </div>
+    <div id="user_device_check_network"> </div>
+    <div id="user_device_check_gps"> </div>
+    <div id="wrong_password"> *Incorrect password* </div>
+    </div></center>
+
+    </div>
+<!--Ends here-->
+
+</body>
+
+</html>
+
