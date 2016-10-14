@@ -8,9 +8,9 @@ The app was developed with the latest up to date cordova version 6.3.1. It suppo
 
 ## Note
 
-This app is developed using Arduino Uno connected to Ble mini and also on Blend Micro board 
+This app is developed using Arduino Uno connected to Ble mini 
 
-If you are using Blend Micro board, please comment out:
+Note: If you are using Blend Micro board, please comment out:
 * line 191 and 341 in scan_for_device.js
 * line 718-722 in global.js
 
