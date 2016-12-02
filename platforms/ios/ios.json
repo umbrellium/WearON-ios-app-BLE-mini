@@ -13,10 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"BLE\"><param name=\"ios-package\" value=\"EVOBLE\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"BackgroundMode\"><param name=\"ios-package\" value=\"APPBackgroundMode\" /></feature>",
                             "count": 1
                         },
@@ -35,6 +31,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BLE\"><param name=\"ios-package\" value=\"EVOBLE\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": [
@@ -50,6 +50,10 @@
                     "UIBackgroundModes": [
                         {
                             "xml": "<array><string>audio</string></array>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<array><string>bluetooth-central</string></array>",
                             "count": 1
                         }
                     ],
@@ -68,9 +72,6 @@
             "PACKAGE_NAME": "com.example.WearON"
         },
         "cordova.plugins.diagnostic": {
-            "PACKAGE_NAME": "com.example.WearON"
-        },
-        "com.evothings.ble": {
             "PACKAGE_NAME": "com.example.WearON"
         },
         "cordova-plugin-bluetooth-serial": {
@@ -93,6 +94,9 @@
         },
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "com.example.WearON"
+        },
+        "cordova-plugin-ble": {
+            "PACKAGE_NAME": "com.example.WearON"
         }
     },
     "dependent_plugins": {},
@@ -103,14 +107,6 @@
             "pluginId": "cordova.plugins.diagnostic",
             "clobbers": [
                 "cordova.plugins.diagnostic"
-            ]
-        },
-        {
-            "file": "plugins/com.evothings.ble/ble.js",
-            "id": "com.evothings.ble.BLE",
-            "pluginId": "com.evothings.ble",
-            "clobbers": [
-                "evothings.ble"
             ]
         },
         {
@@ -195,18 +191,26 @@
             "clobbers": [
                 "device"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-ble/ble.js",
+            "id": "cordova-plugin-ble.BLE",
+            "pluginId": "cordova-plugin-ble",
+            "clobbers": [
+                "evothings.ble"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-whitelist": "1.2.1",
         "cordova.plugins.diagnostic": "1.1.0",
-        "com.evothings.ble": "0.0.1",
         "cordova-plugin-bluetooth-serial": "0.4.5",
         "de.appplant.cordova.plugin.background-mode": "0.6.4",
         "cordova-plugin-network-information": "1.2.0",
         "cordova-plugin-geolocation": "2.1.0",
         "de.appplant.cordova.common.registerusernotificationsettings": "1.0.1",
         "cordova-plugin-vibration": "2.1.0",
-        "org.apache.cordova.device": "0.3.0"
+        "org.apache.cordova.device": "0.3.0",
+        "cordova-plugin-ble": "2.0.1"
     }
 }

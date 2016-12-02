@@ -3,10 +3,13 @@ function getTokenData() {
 
     $(".useStoredToken").hide();
     var key = document.getElementById("key").value + "-" + document.getElementById("key2").value;
-    var x = "https://pure-taiga-5893.herokuapp.com/tokens/" + key + "/token_key";
+    var x = "http://www.wearon.io/tokens/" + key + "/token_key";
     $.get(x,
         function(data, status) {
-            token_info = data;
+            var body = data.replace(/^[\S\s]*<body[^>]*?>/i, "")
+                .replace(/<\/body[\S\s]*$/i, ""); //get body of content
+
+            token_info = body;
             readTokenData();
         });
 
@@ -18,10 +21,7 @@ function getTokenData() {
 function readTokenData() {
 
     // split the html content of url to readable chunk
-    var dataChunk = token_info.split(" ");
-
-    // split the actual content of the tokenstring
-    var tokenContent = dataChunk[28].split("&quot;");
+    var tokenContent = token_info.split("&quot;");
 
     //dissect tokenstring into the neccessary info
     if (tokenContent[3] != "") { // check is user inputing any key in this catagory
@@ -93,7 +93,6 @@ function readTokenData() {
 
     // have a confirm and restart button for user to verify data, and move on to next step if correct
     $("#confirmationPage").show();
-
 
 };
 

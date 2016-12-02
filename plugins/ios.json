@@ -104,9 +104,6 @@
         "cordova.plugins.diagnostic": {
             "PACKAGE_NAME": "com.example.WearON"
         },
-        "com.evothings.ble": {
-            "PACKAGE_NAME": "com.example.WearON"
-        },
         "cordova-plugin-bluetooth-serial": {
             "PACKAGE_NAME": "com.example.WearON"
         },
@@ -123,6 +120,9 @@
             "PACKAGE_NAME": "com.example.WearON"
         },
         "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "com.example.WearON"
+        },
+        "cordova-plugin-ble": {
             "PACKAGE_NAME": "com.example.WearON"
         }
     },

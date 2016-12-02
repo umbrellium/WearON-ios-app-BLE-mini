@@ -6,9 +6,6 @@
     <feature name="Diagnostic">
         <param name="ios-package" value="Diagnostic" />
     </feature>
-    <feature name="BLE">
-        <param name="ios-package" value="EVOBLE" />
-    </feature>
     <feature name="BackgroundMode">
         <param name="ios-package" value="APPBackgroundMode" />
     </feature>
@@ -23,6 +20,9 @@
     </feature>
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
+    </feature>
+    <feature name="BLE">
+        <param name="ios-package" value="EVOBLE" />
     </feature>
     <feature name="BluetoothSerial">
         <param name="ios-package" onload="true" value="MEGBluetoothSerial" />

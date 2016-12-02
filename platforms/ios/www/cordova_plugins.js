@@ -9,14 +9,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/com.evothings.ble/ble.js",
-        "id": "com.evothings.ble.BLE",
-        "pluginId": "com.evothings.ble",
-        "clobbers": [
-            "evothings.ble"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-bluetooth-serial/www/bluetoothSerial.js",
         "id": "cordova-plugin-bluetooth-serial.bluetoothSerial",
         "pluginId": "cordova-plugin-bluetooth-serial",
@@ -98,6 +90,14 @@ module.exports = [
         "clobbers": [
             "device"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-ble/ble.js",
+        "id": "cordova-plugin-ble.BLE",
+        "pluginId": "cordova-plugin-ble",
+        "clobbers": [
+            "evothings.ble"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -105,14 +105,14 @@ module.exports.metadata =
 {
     "cordova-plugin-whitelist": "1.2.1",
     "cordova.plugins.diagnostic": "1.1.0",
-    "com.evothings.ble": "0.0.1",
     "cordova-plugin-bluetooth-serial": "0.4.5",
     "de.appplant.cordova.plugin.background-mode": "0.6.4",
     "cordova-plugin-network-information": "1.2.0",
     "cordova-plugin-geolocation": "2.1.0",
     "de.appplant.cordova.common.registerusernotificationsettings": "1.0.1",
     "cordova-plugin-vibration": "2.1.0",
-    "org.apache.cordova.device": "0.3.0"
+    "org.apache.cordova.device": "0.3.0",
+    "cordova-plugin-ble": "2.0.1"
 }
 // BOTTOM OF METADATA
 });
